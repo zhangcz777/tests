@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdbool.h>
+void judge(int a[],int y)
+{
+    bool isD=true,isQ=true;
+    int d=a[1]-a[0],q=(a[0]!=0)?(a[1]/a[0]):0;
+    for (int i=0;i<y-1;i++)
+    {
+        if (a[i+1]-a[i]!=d)
+        {
+            isD=false;
+        } 
+        if (a[i]==0 ||a[i+1]%a[i]!=0 || a[i+1]/a[i]!=q)
+        {
+            isQ=false;
+        }  
+    }
+    if (isD)
+    {
+        printf("%d\n",d);
+    }
+    else if (isQ)
+    {
+        printf("%d\n",q);
+    }
+    else
+    {
+        printf("-1\n");
+    }
+}
+
+int main()
+{
+    int x,y;
+    scanf("%d %d",&x,&y);
+    int a[x][y];
+    for(int i=0;i<x;i++)
+    {
+        for(int j=0;j<y;j++)
+        {
+            scanf("%d",&a[i][j]);
+        }
+    }
+    for (int i=0;i<x;i++)
+    {
+        judge(a[i],y);
+    }
+    return 0;
+}
